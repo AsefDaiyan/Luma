@@ -10,17 +10,17 @@
     --accent: #06b6d4;        /* Cyan for gradients */
     
     /* Dark Backgrounds */
-    --bg-deep: #020617;       /* Very Dark Navy (Almost Black) */
-    --bg-card: #0f172a;       /* Slate 900 (Card Background) */
-    --bg-input: #1e293b;      /* Slate 800 */
+    --bg-deep: #868eb0;       /* Very Dark Navy (Almost Black) */
+    --bg-card: #8d919b;       /* Slate 900 (Card Background) */
+    --bg-input: #98a0ae;      /* Slate 800 */
     
     /* Text Colors */
     --text-main: #f8fafc;     /* White/Bright */
     --text-muted: #94a3b8;    /* Muted Blue-Grey */
     
     /* Dark Glassmorphism */
-    --glass-bg: rgba(15, 23, 42, 0.75); /* Dark tint */
-    --glass-border: rgba(59, 130, 246, 0.2); /* Blueish border */
+    --glass-bg: rgba(181, 189, 210, 0.75); /* Dark tint */
+    --glass-border: rgba(234, 237, 242, 0.996); /* Blueish border */
     --glass-blur: blur(12px);
 
     /* Shadows & Glows */
