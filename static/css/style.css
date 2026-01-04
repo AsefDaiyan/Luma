@@ -1,73 +1,115 @@
-/* --- Variables & Reset --- */
+/* =========================================================
+   Luma – Midnight Azure (Dark Blue & Black Theme)
+   ========================================================= */
+
+/* ---------- 1. ROOT VARIABLES (THEME CONFIG) ---------- */
 :root {
-    --primary-color: #6366f1; /* Beautiful Indigo */
-    --primary-hover: #4f46e5;
-    --bg-color: #f8fafc;      /* Very Light Gray/Blueish */
-    --text-dark: #1e293b;
-    --text-muted: #64748b;
-    --glass-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    /* Glowing Blue Palette */
+    --primary: #3b82f6;       /* Royal Blue */
+    --primary-glow: #60a5fa;  /* Lighter Blue for glow */
+    --accent: #06b6d4;        /* Cyan for gradients */
+    
+    /* Dark Backgrounds */
+    --bg-deep: #020617;       /* Very Dark Navy (Almost Black) */
+    --bg-card: #0f172a;       /* Slate 900 (Card Background) */
+    --bg-input: #1e293b;      /* Slate 800 */
+    
+    /* Text Colors */
+    --text-main: #f8fafc;     /* White/Bright */
+    --text-muted: #94a3b8;    /* Muted Blue-Grey */
+    
+    /* Dark Glassmorphism */
+    --glass-bg: rgba(15, 23, 42, 0.75); /* Dark tint */
+    --glass-border: rgba(59, 130, 246, 0.2); /* Blueish border */
+    --glass-blur: blur(12px);
+
+    /* Shadows & Glows */
+    --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --glow-primary: 0 0 20px rgba(59, 130, 246, 0.4);
 }
 
+/* ---------- 2. GLOBAL BODY & DARK ATMOSPHERE ---------- */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-dark);
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Inter', sans-serif !important;
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    /* Subtle Blue Glow Background */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
+    background-attachment: fixed;
 }
 
-h1, h2, h3, h4, h5, .navbar-brand, .btn {
-    font-family: 'Poppins', sans-serif;
+h1, h2, h3, h4, h5, .navbar-brand {
+    font-family: 'Poppins', sans-serif !important;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
 }
 
-a { text-decoration: none; }
+.main-container {
+    padding-bottom: 60px;
+    margin-top: 20px;
+}
 
-/* --- Navbar Glassmorphism --- */
+/* ---------- 3. NAVBAR (DARK GLASS) ---------- */
 .navbar-glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-    padding: 12px 0;
-    transition: all 0.3s ease;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 0;
 }
 
-/* Brand Logo Styling */
+/* Brand Logo */
 .navbar-brand .brand-icon {
-    width: 35px;
-    height: 35px;
-    background: linear-gradient(135deg, var(--primary-color), #818cf8);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
-    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    box-shadow: var(--glow-primary);
 }
 
 .brand-text {
     font-weight: 700;
-    font-size: 1.25rem;
-    color: var(--text-dark);
-    letter-spacing: -0.5px;
+    font-size: 1.3rem;
+    color: white;
 }
 
-/* --- Search Bar --- */
-.search-form .input-group {
-    background: #f1f5f9;
-    border-radius: 50px;
-    padding: 2px 5px;
-    border: 1px solid transparent;
+/* Navigation Icons */
+.nav-icon-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
 
-.search-form .input-group:focus-within {
-    background: white;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+.nav-icon-btn:hover {
+    color: white;
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: var(--glow-primary);
+    transform: translateY(-2px);
+}
+
+/* Search Bar (Dark Mode) */
+.search-form .input-group {
+    background: var(--bg-input);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
 }
 
 .search-form .input-group-text {
@@ -79,152 +121,104 @@ a { text-decoration: none; }
 .search-form input {
     background: transparent;
     border: none;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-}
-
-.search-form input:focus {
-    box-shadow: none;
-    background: transparent;
-}
-
-/* --- Navigation Icons --- */
-.nav-icon-btn {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: var(--text-muted);
-    background: white;
-    transition: all 0.2s ease;
-    border: 1px solid #e2e8f0;
-}
-
-.nav-icon-btn:hover {
-    color: var(--primary-color);
-    background: #eef2ff;
-    transform: translateY(-2px);
-}
-
-.nav-icon-btn.highlight {
     color: white;
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.25);
+}
+.search-form input::placeholder { color: #64748b; }
+.search-form input:focus { box-shadow: none; }
+
+/* ---------- 4. CARDS & CONTAINERS (DARK SURFACE) ---------- */
+.card, .auth-card, .post-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px !important;
+    box-shadow: var(--shadow-card);
+    color: var(--text-main);
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.nav-icon-btn.highlight:hover {
-    background: var(--primary-hover);
+.card:hover, .post-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: var(--glow-primary);
 }
 
-/* --- Avatar & Dropdown --- */
-.avatar-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+/* Inputs styling inside cards */
+.form-control, .form-select {
+    background-color: var(--bg-deep) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white !important;
+    border-radius: 12px;
+    padding: 12px;
 }
 
-.avatar-placeholder {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    border: 2px solid white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
 
-.user-dropdown-toggle:hover .avatar-img, 
-.user-dropdown-toggle:hover .avatar-placeholder {
-    transform: scale(1.05);
-}
-
-.custom-dropdown {
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
-    padding: 10px;
-    margin-top: 15px !important;
-}
-
-.dropdown-item {
-    border-radius: 8px;
-    padding: 8px 15px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-dark);
-}
-
-.dropdown-item:hover {
-    background-color: #f1f5f9;
-    color: var(--primary-color);
-}
-
-.dropdown-header {
-    background: transparent;
-    padding: 5px 15px;
-}
-
-/* --- Buttons --- */
+/* ---------- 5. BUTTONS (NEON BLUE) ---------- */
 .btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary), #2563eb) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-hover);
-    border-color: var(--primary-hover);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.6); /* Stronger glow */
 }
 
-.btn-pill {
+.btn-outline-primary {
+    color: var(--primary);
+    border: 2px solid var(--primary);
     border-radius: 50px;
-    padding: 8px 24px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    transition: transform 0.2s;
 }
 
-.btn-pill:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+.btn-outline-primary:hover {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--glow-primary);
 }
 
-/* --- Alerts --- */
+/* ---------- 6. DROPDOWNS & MENUS ---------- */
+.dropdown-menu {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-item {
+    color: var(--text-main);
+    border-radius: 8px;
+    margin: 4px;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: var(--primary-glow);
+}
+
+.dropdown-header small { color: var(--text-muted); }
+.dropdown-divider { border-top-color: rgba(255, 255, 255, 0.1); }
+
+/* ---------- 7. ALERTS ---------- */
 .alert-custom {
+    background: var(--bg-card);
+    color: white;
     border: none;
-    border-radius: 12px;
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-left: 5px solid var(--primary-color);
-    margin-bottom: 20px;
-    animation: slideDown 0.4s ease-out;
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.alert-success { border-left-color: #10b981; }
-.alert-danger { border-left-color: #ef4444; }
+/* Mobile Toggler */
+.navbar-toggler i { color: white; }
 
-/* --- Animations --- */
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* Text Links */
+a { color: var(--primary-glow); transition: 0.2s; }
+a:hover { color: var(--accent); }
